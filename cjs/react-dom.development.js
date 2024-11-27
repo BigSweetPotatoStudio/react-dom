@@ -1058,6 +1058,10 @@ if (true) {
      */
 
     function setValueForProperty(node, name, value, isCustomComponentTag) {
+    
+      // if(name=='placeholder') {
+      //    console.log('name', name);
+      // }
       var propertyInfo = getPropertyInfo(name);
 
       if (shouldIgnoreAttribute(name, propertyInfo, isCustomComponentTag)) {
@@ -1080,7 +1084,9 @@ if (true) {
             {
               checkAttributeStringCoercion(value, name);
             }
-
+            if(_attributeName === 'placeholder') {
+              value = (window.tranlate && window.tranlate(value)) || value;
+            }
             node.setAttribute(_attributeName, "" + value);
           }
         }
